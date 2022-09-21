@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Secrets
-        run: echo ${{github.secrets.ID_SITE_NETLIFY}}
+      - uses: actions/labeler@v4
+        run: echo ${{secrets.ID_SITE_NETLIFY}}
   build-react:
     runs-on: ubuntu-latest
     steps:
