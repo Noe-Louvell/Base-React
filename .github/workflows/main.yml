@@ -17,7 +17,7 @@ jobs:
         run: npm install
       - name: Build Artefact 
         run: npm run build
-  create-build:
+  test-react:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -41,7 +41,7 @@ jobs:
           node-version: 16.x
       - name: Install dependencies
         run: npm install
-      - name: Run test 
+      - name: Build App 
         run: npm run build
       - name: Deploy App
         run: netlify deploy --site secrets.ID_SITE_NETLIFY --auth secrets.TOKEN_NETLIFY --dir build/ --prod
