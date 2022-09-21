@@ -28,27 +28,31 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-  test-react:
-    runs-on: ubuntu-latest
-    steps:
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: Clone repository
-        uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
       - name: Run test 
         run: npm run test
-  deploy-react:
-    runs-on: ubuntu-latest
-    steps:
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: Clone repository
-        uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
       - name: Deploy App
         run: netlify deploy --site ${{secrets.ID_SITE_NETLIFY}} --auth ${{secrets.TOKEN_NETLIFY}} --dir build/ --prod
+  # test-react:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+  #       name: Clone repository
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: Run test 
+  #       run: npm run test
+  # deploy-react:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+  #       name: Clone repository
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: Deploy App
+  #       run: netlify deploy --site ${{secrets.ID_SITE_NETLIFY}} --auth ${{secrets.TOKEN_NETLIFY}} --dir build/ --prod
