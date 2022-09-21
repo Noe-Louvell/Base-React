@@ -17,31 +17,33 @@ jobs:
         run: npm install
       - name: Build Artefact 
         run: npm run build
-      - uses: actions/cache@v3
+      - name: Cache 
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
             package-lock.json
             build
-  test-react:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Run test 
-        run: npm run test
-  deploy-react:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Deploy App
-        run: netlify deploy --site ${{secrets.ID_SITE_NETLIFY}} --auth ${{secrets.TOKEN_NETLIFY}} --dir build/ --prod
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  # test-react:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Clone repository
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: Run test 
+  #       run: npm run test
+  # deploy-react:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Clone repository
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: Deploy App
+  #       run: netlify deploy --site ${{secrets.ID_SITE_NETLIFY}} --auth ${{secrets.TOKEN_NETLIFY}} --dir build/ --prod
