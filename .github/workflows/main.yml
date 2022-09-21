@@ -44,4 +44,4 @@ jobs:
       - name: Run test 
         run: npm run build
       - name: Deploy App
-        run: netlify deploy
+        run: netlify deploy --site 349f2084-9623-4cc8-8546-178d7e5de519 --auth knLQZTwF0kI3iVIf3f7-nfg573tbRzKN5YofBZrHa4g --dir public/ --prod
