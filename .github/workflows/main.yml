@@ -4,12 +4,6 @@ on:
     branches: [ CI/CD ]
 
 jobs:
-  echos-secrets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Secrets
-        uses: actions/labeler@v4
-        run: echo ${{secrets.ID_SITE_NETLIFY}}
   build-react:
     runs-on: ubuntu-latest
     steps:
