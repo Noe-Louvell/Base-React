@@ -1,0 +1,23 @@
+name: CI Github Action
+on:
+  push:
+    branches: [ CI/CD ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm install
+  run :
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      with:
+          node-version: '16.x'
+      - name: Run Project
+        run: npm start
