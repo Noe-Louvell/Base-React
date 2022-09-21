@@ -17,13 +17,12 @@ jobs:
         run: npm install
       - name: Build Artefact 
         run: npm run build
-      - name: Cache
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         with:
-          path:
-              - node_modules
-              - package-lock.json
-              - build
+          path: |
+            node_modules
+            package-lock.json
+            build
   test-react:
     runs-on: ubuntu-latest
     steps:
