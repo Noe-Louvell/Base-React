@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Secrets
-        run: echo ${{secrets.ID_SITE_NETLIFY}}
+        run: echo ${{github.secrets.ID_SITE_NETLIFY}}
   build-react:
     runs-on: ubuntu-latest
     steps:
