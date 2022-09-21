@@ -21,9 +21,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path:
-            - node_modules
-            - package-lock.json
-            - build
+              - node_modules
+              - package-lock.json
+              - build
   test-react:
     runs-on: ubuntu-latest
     steps:
