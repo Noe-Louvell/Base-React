@@ -25,6 +25,8 @@ jobs:
             package-lock.json
             build
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
   # test-react:
   #   runs-on: ubuntu-latest
   #   steps:
