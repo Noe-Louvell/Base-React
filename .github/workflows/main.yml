@@ -7,6 +7,11 @@ jobs:
   build-react:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Secrets
+        run: echo ${{secrets.ID_SITE_NETLIFY}}
+  build-react:
+    runs-on: ubuntu-latest
+    steps:
       - name: Clone repository
         uses: actions/checkout@v2
       - name: Use Node.js 16.x
